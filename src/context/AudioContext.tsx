@@ -3,7 +3,20 @@ import tracsList from "../assets/tracsList";
 
 const audio = new Audio();
 
-export const AudioContext = createContext({});
+// export const AudioContext = createContext({audio, currentTrack, handleToggleAudio, currentTrack, isPlaying});
+interface AudioContext {
+    audio: any;
+    currentTrack: any;
+    handleToggleAudio: any;
+    isPlaying: any;
+}
+
+export const AudioContext = createContext<AudioContext>({
+    audio: null,
+    currentTrack: null,
+    handleToggleAudio: () => {},
+    isPlaying: false
+});
 
 const AudioProvider = ({ children }: any) => {
     const [currentTrack, setCurrentTrack] = useState(tracsList[0]);
